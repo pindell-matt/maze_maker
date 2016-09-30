@@ -5,4 +5,8 @@ class Maze
     @size = size
   end
 
+  def generate_grid(size)
+    Array.new(size) { Array.new(size) }
+  end
+
 end
