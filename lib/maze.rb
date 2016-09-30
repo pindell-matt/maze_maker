@@ -46,19 +46,32 @@ class Maze
 
   def print_to_console
     puts "\nGenerated Maze size: #{size} x #{size}"
+    print "\n"
+    print_walls
+    print "\n"
+  end
+
+  def print_walls
     puts size.times.inject("+") {|s, x| s << (x == 0 ? "   +" : "---+")}
-    size.times do |y|
-      line = size.times.inject("|") do |string, x|
-        space = "   "
-        vertical_wall = @vertical_walls[x][y] ? "|" : " "
-        string << space << vertical_wall
-      end
-      puts line
-      puts size.times.inject("+") { |s, x| s << (@horizontal_walls[x][y] ? "---+" : "   +") }
+    size.times do |row|
+      puts print_vertical_walls(row)
+      puts print_horizontal_walls(row)
     end
   end
 
+  def print_vertical_walls(y)
+    size.times.inject("|") do |string, x|
+      space = "   "
+      vertical_wall = @vertical_walls[x][y] ? "|" : " "
+      string << space << vertical_wall
+    end
+  end
 
+  def print_horizontal_walls(y)
+    size.times.inject("+") do |string, x|
+      string << (@horizontal_walls[x][y] ? "---+" : "   +")
+    end
+  end
 end
 
 maze = Maze.new(5)
