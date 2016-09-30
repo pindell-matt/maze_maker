@@ -68,8 +68,8 @@ class MazeTest < Minitest::Test
     out, err = capture_io do
       @maze.print_to_console
     end
-    first_line = out.split("\n")[0]
+    first_line = out.split("\n")[1]
 
-    assert_equal "Generated Maze size: #{@def_size}", first_line
+    assert_equal "Generated Maze size: #{@def_size} x #{@def_size}", first_line
   end
 end
