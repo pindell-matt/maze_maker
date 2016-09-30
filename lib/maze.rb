@@ -15,6 +15,8 @@ class Maze
     @vertical_walls = generate_grid(size, true)
     @horizontal_walls = generate_grid(size, true)
     @solution = set_cells_as_false
+
+    generate_maze(0, 0)
   end
 
   def set_cells_as_false
