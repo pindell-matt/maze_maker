@@ -143,9 +143,3 @@ class Maze
     @queue << path + [[x, y]]
   end
 end
-
-maze = Maze.new(5)
-maze.generate_maze(0, 0)
-maze.print_to_console
-maze.solve
-maze.print_to_console
