@@ -2,10 +2,11 @@ require 'minitest/autorun'
 require_relative '../lib/maze'
 
 class MazeTest < Minitest::Test
-  attr_reader :maze
+  attr_reader :maze, :grid
 
   def setup
     @maze = Maze.new(10)
+    @grid = @maze.generate_grid(10)
   end
 
   def test_maze_has_fixed_size
@@ -29,5 +30,13 @@ class MazeTest < Minitest::Test
     assert_equal 10, grid[0].length
     assert_equal 0, grid[0][0]
     assert_equal 0, grid[9][9]
+  end
+
+  def test_cells_can_be_valid
+    first_cell = @grid.cell_valid?(0, 0)
+    last_cell  = @grid.cell_valid?(@maze.size - 1, @maze.size - 1)
+
+    assert first_cell
+    assert last_cell
   end
 end
