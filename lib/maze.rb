@@ -9,4 +9,9 @@ class Maze
     Array.new(size) { Array.new(size, val) }
   end
 
+  def cell_valid?(x, y)
+    maze_range = (0...size)
+    maze_range.include?(x) && maze_range.include?(y)
+  end
+
 end

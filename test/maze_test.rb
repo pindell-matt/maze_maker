@@ -33,8 +33,8 @@ class MazeTest < Minitest::Test
   end
 
   def test_cells_can_be_valid
-    first_cell = @grid.cell_valid?(0, 0)
-    last_cell  = @grid.cell_valid?(@maze.size - 1, @maze.size - 1)
+    first_cell = @maze.cell_valid?(0, 0)
+    last_cell  = @maze.cell_valid?(@maze.size - 1, @maze.size - 1)
 
     assert first_cell
     assert last_cell
