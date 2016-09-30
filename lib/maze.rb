@@ -22,9 +22,17 @@ class Maze
     MOVEMENTS.shuffle.map { |mx, my| [x + mx, y + my] }
   end
 
+  def generate_maze(x, y)
+    visited[x][y] = true
+    for mx, my in generate_movements(x, y)
+      next if !cell_valid?(mx, my)
+      generate_maze(mx, my)
+    end
+  end
+
   def cell_valid?(x, y)
     maze_range = (0...size)
-    maze_range.include?(x) && maze_range.include?(y)
+    maze_range.include?(x) && maze_range.include?(y) && (not visited[x][y])
   end
 
 end

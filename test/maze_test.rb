@@ -1,12 +1,15 @@
 require 'minitest/autorun'
 require_relative '../lib/maze'
 
+require 'pp'
+
 class MazeTest < Minitest::Test
   attr_reader :maze, :grid
 
   def setup
-    @maze = Maze.new(5)
-    @grid = @maze.generate_grid(5)
+    @def_size = 5
+    @maze = Maze.new(@def_size)
+    @grid = @maze.generate_grid(@def_size)
   end
 
   def test_maze_has_fixed_size
@@ -24,7 +27,7 @@ class MazeTest < Minitest::Test
   end
 
   def test_maze_can_generate_a_grid_of_nested_arrays_with_desired_type
-    desired_size = 5
+    desired_size = @def_size
     grid = @maze.generate_grid(desired_size, 0)
 
     assert_equal desired_size, grid.length
@@ -49,10 +52,15 @@ class MazeTest < Minitest::Test
   end
 
   def test_can_generate_the_maze
-    maze = Maze.new(5)
+    maze = Maze.new(@def_size)
     visited_positions = maze.visited
 
     refute visited_positions[0][0]
-    refute visited_positions[4][4]
+    refute visited_positions[@def_size - 1][@def_size - 1]
+
+    maze.generate_maze(0, 0)
+
+    assert visited_positions[0][0]
+    assert visited_positions[@def_size - 1][@def_size - 1]
   end
 end
