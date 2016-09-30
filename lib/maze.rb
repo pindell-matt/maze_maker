@@ -44,4 +44,8 @@ class Maze
     vertical_walls[min_x][y] = false if y == my
   end
 
+  def print_to_console
+    puts "Generated Maze size: #{size}"
+  end
+
 end
