@@ -1,4 +1,5 @@
 require 'minitest/autorun'
+require_relative '../lib/maze'
 
 class MazeTest < Minitest::Test
 
