@@ -47,6 +47,7 @@ class Maze
   def print_to_console
     puts "\nGenerated Maze size: #{size} x #{size}"
     print "\n"
+    open_exit_wall
     print_walls
     print "\n"
   end
@@ -71,6 +72,10 @@ class Maze
     size.times.inject("+") do |string, x|
       string << (@horizontal_walls[x][y] ? "---+" : "   +")
     end
+  end
+
+  def open_exit_wall
+    horizontal_walls[size - 1][size - 1] = false
   end
 end
 
