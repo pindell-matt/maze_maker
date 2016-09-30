@@ -63,4 +63,13 @@ class MazeTest < Minitest::Test
     assert visited_positions[0][0]
     assert visited_positions[@def_size - 1][@def_size - 1]
   end
+
+  def test_can_print_to_console
+    out, err = capture_io do
+      @maze.print_to_console
+    end
+    first_line = out.split("\n")[1]
+
+    assert_equal "Generated Maze size: #{@def_size} x #{@def_size}", first_line
+  end
 end
