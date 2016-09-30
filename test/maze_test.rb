@@ -5,8 +5,8 @@ class MazeTest < Minitest::Test
   attr_reader :maze, :grid
 
   def setup
-    @maze = Maze.new(10)
-    @grid = @maze.generate_grid(10)
+    @maze = Maze.new(5)
+    @grid = @maze.generate_grid(5)
   end
 
   def test_maze_has_fixed_size
@@ -17,19 +17,20 @@ class MazeTest < Minitest::Test
   end
 
   def test_maze_can_generate_a_grid_of_nested_arrays
-    grid = @maze.generate_grid(10)
+    grid = @maze.generate_grid(8)
 
-    assert_equal 10, grid.length
-    assert_equal 10, grid[0].length
+    assert_equal 8, grid.length
+    assert_equal 8, grid[0].length
   end
 
   def test_maze_can_generate_a_grid_of_nested_arrays_with_desired_type
-    grid = @maze.generate_grid(10, 0)
+    desired_size = 5
+    grid = @maze.generate_grid(desired_size, 0)
 
-    assert_equal 10, grid.length
-    assert_equal 10, grid[0].length
+    assert_equal desired_size, grid.length
+    assert_equal desired_size, grid[0].length
     assert_equal 0, grid[0][0]
-    assert_equal 0, grid[9][9]
+    assert_equal 0, grid[desired_size - 1][desired_size - 1]
   end
 
   def test_cells_can_be_valid
@@ -45,5 +46,13 @@ class MazeTest < Minitest::Test
     movements = @maze.generate_movements(0, 0)
 
     assert_equal all_movements.sort, movements.sort
+  end
+
+  def test_can_generate_the_maze
+    maze = Maze.new(5)
+    visited_positions = maze.visited
+
+    refute visited_positions[0][0]
+    refute visited_positions[4][4]
   end
 end

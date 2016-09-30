@@ -1,4 +1,5 @@
 class Maze
+  attr_accessor :visited
   attr_reader :size
 
   MOVEMENTS = [
@@ -10,6 +11,7 @@ class Maze
 
   def initialize(size)
     @size = size
+    @visited = generate_grid(size, false)
   end
 
   def generate_grid(size, val=nil)
