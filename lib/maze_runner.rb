@@ -33,6 +33,7 @@ class MazeRunner
 
   def new_maze(input)
     @maze = Maze.new(input.to_i)
+    maze.generate_maze(0, 0)
     maze.print_to_console
   end
 
