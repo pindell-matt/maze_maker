@@ -42,7 +42,7 @@ class MazeTest < Minitest::Test
 
   def test_can_generate_movements_from_a_given_cell
     all_movements = [[0, 1], [1, 0], [0, -1], [-1, 0]]
-    movements = @maze.generate_movements(1, 1)
+    movements = @maze.generate_movements(0, 0)
 
     assert_equal all_movements.sort, movements.sort
   end
