@@ -21,4 +21,13 @@ class MazeTest < Minitest::Test
     assert_equal 10, grid.length
     assert_equal 10, grid[0].length
   end
+
+  def test_maze_can_generate_a_grid_of_nested_arrays_with_desired_type
+    grid = @maze.generate_grid(10, 0)
+
+    assert_equal 10, grid.length
+    assert_equal 10, grid[0].length
+    assert_equal 0, grid[0][0]
+    assert_equal 0, grid[9][9]
+  end
 end

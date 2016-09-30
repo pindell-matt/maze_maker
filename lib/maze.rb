@@ -5,8 +5,8 @@ class Maze
     @size = size
   end
 
-  def generate_grid(size)
-    Array.new(size) { Array.new(size) }
+  def generate_grid(size, val=nil)
+    Array.new(size) { Array.new(size, val) }
   end
 
 end
